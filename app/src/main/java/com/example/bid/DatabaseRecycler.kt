@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -20,28 +21,33 @@ class DatabaseRecycler : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_database_recycler)
         recyclerView=findViewById(R.id.recyclerImage)
-        recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL ,false)
+        recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false)
 
 
         imagesList= arrayListOf()
         databaseReference=FirebaseDatabase.getInstance().getReference("UserImagesData")
-        recyclerView.adapter=imageAdapter(imagesList,this@DatabaseRecycler)
+
 
 
 
         databaseReference.addValueEventListener(object:ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
-
+                     imagesList.clear()
                 if(snapshot.exists())
                 {
                     for(dataSnapshot in snapshot.children){
-                        val image=dataSnapshot.getValue(usserImages::class.java)
+                        val image=dataSnapshot.child("Url").getValue(usserImages::class.java)
                         imagesList.add(image!!)
+
                     }
-                    recyclerView.adapter=imageAdapter(imagesList,this@DatabaseRecycler)
+
                 }
+
+                recyclerView.adapter=imageAdapter(imagesList,this@DatabaseRecycler)
+
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -49,8 +55,6 @@ class DatabaseRecycler : AppCompatActivity() {
                 Toast.makeText(this@DatabaseRecycler,error.toString(),Toast.LENGTH_SHORT).show()
             }
         })
-
-
 
         val bottomnavigationview:BottomNavigationView=findViewById(R.id.bottomNavigationView)
 

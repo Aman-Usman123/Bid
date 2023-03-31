@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/secoundnavigation"
+    app:startDestination="@id/mainhomepage">
+
+    <fragment
+        android:id="@+id/mainhomepage"
+        android:name="com.example.bid.mainhomepage"
+        android:label="fragment_mainhomepage"
+        tools:layout="@layout/fragment_mainhomepage" >
+        <action
+            android:id="@+id/action_mainhomepage_to_aboutapp"
+            app:destination="@id/aboutapp" />
+        <action
+            android:id="@+id/action_mainhomepage_to_sellfragments"
+            app:destination="@id/sellfragments" />
+    </fragment>
+    <fragment
+        android:id="@+id/aboutapp"
+        android:name="com.example.bid.Aboutapp"
+        android:label="fragment_aboutapp"
+        tools:layout="@layout/fragment_aboutapp" />
+    <fragment
+        android:id="@+id/sellfragments"
+        android:name="com.example.bid.sellfragments"
+        android:label="fragment_sellfragments"
+        tools:layout="@layout/fragment_sellfragments" >
+        <action
+            android:id="@+id/action_sellfragments_to_mainhomepage"
+            app:destination="@id/mainhomepage" />
+    </fragment>
+</navigation>
