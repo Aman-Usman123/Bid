@@ -28,7 +28,7 @@ class sellActivity : AppCompatActivity() {
 
     private lateinit var uri: Uri
     private var storageReference= Firebase.storage
-    @SuppressLint("SuspiciousIndentation")
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sell)
@@ -57,18 +57,20 @@ val imageview=findViewById<ImageView>(R.id.imageo)
                 .putFile(uri)
 
                 .addOnSuccessListener {task ->
-                    task.metadata!!.reference!!.downloadUrl.addOnSuccessListener {downlaodUrl ->
+                    task.metadata!!.reference!!.downloadUrl.addOnSuccessListener {
+                            downlaodUrl ->
 
                     val uid=FirebaseAuth.getInstance().currentUser!!.uid
                     val imageMap = mapOf(
                         "ImageUrl" to downlaodUrl.toString())
-
                         val userdata=usserImages().apply {
                             this.product= product.text.toString()
                             this.catagory=catagory.text.toString()
-                           this.sizes=sizes.text.toString()
-                           this.weight= weight.text.toString()}
-                    val databaseReference=FirebaseDatabase.getInstance().getReference("UserImagesData")
+                            this.sizes=sizes.text.toString()
+                            this.weight= weight.text.toString()
+
+                        }
+                        val databaseReference=FirebaseDatabase.getInstance().getReference("UserImagesData")
                         databaseReference.child(uid).child("userdata").setValue(userdata)
                         databaseReference.child(uid).child("Url").setValue(imageMap)
 
@@ -77,6 +79,7 @@ val imageview=findViewById<ImageView>(R.id.imageo)
                             Toast.makeText(this, "Successfully inserted", Toast.LENGTH_SHORT).show()
                         }
                             .addOnFailureListener{
+
                                 Toast.makeText(this, "Failed", Toast.LENGTH_SHORT).show()
                             }
                 }
