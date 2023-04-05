@@ -36,19 +36,25 @@ private lateinit var firebaseAuth:FirebaseAuth
         login.setOnClickListener {
             val passwords = view.findViewById<EditText>(R.id.passwordlogin).text.toString()
             val Emails = view.findViewById<EditText>(R.id.email1).text.toString()
-
+val currentuser=FirebaseAuth.getInstance().currentUser
             if(Emails.isNotEmpty()&& passwords.isNotEmpty())
             {
                 firebaseAuth.signInWithEmailAndPassword(Emails,passwords).addOnCompleteListener {
 
                     if(it.isSuccessful)
-                    {
-                        val i=Intent(this@loginfragement.requireContext(),DatabaseRecycler::class.java)
+                    { val varification=firebaseAuth.currentUser?.isEmailVerified
+                        if(varification==true)
+
+                        { val i=Intent(this@loginfragement.requireContext(),DatabaseRecycler::class.java)
                         startActivity(i)
-                    }
+                    }else
+                        {
+                            Toast.makeText(requireContext(),"Please varify your Email",Toast.LENGTH_SHORT).show()
+
+                        }}
                       else
                     {
-                        Toast.makeText(requireContext(),"Wrong password or email",Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireContext(),"Wrong password or Email",Toast.LENGTH_SHORT).show()
                     }
                     }
 

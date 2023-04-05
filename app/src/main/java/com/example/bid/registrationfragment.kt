@@ -1,8 +1,10 @@
 package com.example.bid
 
 import android.annotation.SuppressLint
+import android.content.ContentValues.TAG
 import android.os.Bundle
 import android.provider.ContactsContract.CommonDataKinds.Email
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +13,9 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.actionCodeSettings
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 
 class registrationfragment : Fragment() {
@@ -44,14 +49,23 @@ if(Emails.isNotEmpty()&& passwords.isNotEmpty())
 firebaseAuth.createUserWithEmailAndPassword(Emails,passwords).addOnCompleteListener {
 
     if(it.isSuccessful)
-    {
-Toast.makeText(requireContext(),"Register Successfully",Toast.LENGTH_SHORT).show()
+    {val currentUser = FirebaseAuth.getInstance().currentUser
+        currentUser?.sendEmailVerification()
+            ?.addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    // Email sent successfully
+                    Toast.makeText(requireContext(),"Go to Your Email Please",Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(requireContext(),"Sorry Try again",Toast.LENGTH_SHORT).show()
+                }
+            }
+
+
     }else
     {
         Toast.makeText(requireContext(),"Error occurs Not registered",Toast.LENGTH_SHORT).show()
     }
 }
-
 
 }else
 {
