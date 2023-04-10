@@ -22,10 +22,6 @@ import com.google.firebase.storage.ktx.storage
 
 
 class sellActivity : AppCompatActivity() {
-    private lateinit var imageview: ImageView
-    private lateinit var select: Button
-    private lateinit var select2: Button
-
     private lateinit var uri: Uri
     private var storageReference= Firebase.storage
 
@@ -61,20 +57,20 @@ val imageview=findViewById<ImageView>(R.id.imageo)
                             downlaodUrl ->
 
                     val uid=FirebaseAuth.getInstance().currentUser!!.uid
-                    val imageMap = mapOf(
-                        "ImageUrl" to downlaodUrl.toString())
-                        val userdata=usserImages().apply {
-                            this.product= product.text.toString()
-                            this.catagory=catagory.text.toString()
-                            this.sizes=sizes.text.toString()
-                            this.weight= weight.text.toString()
 
-                        }
+                        val imageMap1 = mapOf(
+                            "ImageUrl" to downlaodUrl.toString(),
+                            "product" to product.text.toString(),
+                            "catagory" to catagory.text.toString(),
+                            "size" to sizes.text.toString(),
+                            "weight" to weight.text.toString()
+                        )
+
+
                         val databaseReference=FirebaseDatabase.getInstance().getReference("UserImagesData")
-                        databaseReference.child(uid).child("userdata").setValue(userdata)
-                        databaseReference.child(uid).child("Url").setValue(imageMap)
+                        databaseReference.child(uid).child("UserInfo").setValue(imageMap1)
 
-                        .addOnSuccessListener {
+                            .addOnSuccessListener {
 
                             Toast.makeText(this, "Successfully inserted", Toast.LENGTH_SHORT).show()
                         }
