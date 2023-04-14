@@ -15,6 +15,7 @@ class imageAdapter(val userList:ArrayList<usserImages>
 
      {
          private lateinit var listener: OnItemClickListener
+
          interface OnItemClickListener {
          fun onItemClick(position: Int)
      }
@@ -62,7 +63,6 @@ init {
 
 
     override fun onBindViewHolder(holder: imageViewHolder, position: Int) {
-
         Glide.with(context).load(userList[position].ImageUrl).into(holder.image)
         holder.tv.text=userList[position].product
         holder.tv1.text=userList[position].catagory

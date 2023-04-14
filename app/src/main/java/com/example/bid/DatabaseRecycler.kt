@@ -40,7 +40,6 @@ class DatabaseRecycler : AppCompatActivity() {
 
                             userList.add(user1)
 
-
                         }
 
                     }
@@ -50,7 +49,12 @@ class DatabaseRecycler : AppCompatActivity() {
                 adapter.setOnItemClickListener(object : imageAdapter.OnItemClickListener {
                     override fun onItemClick(position: Int) {
                         // Handle click event here
+
                         val intent =Intent(this@DatabaseRecycler,Descriptionpage::class.java)
+                        intent.putExtra("productImage", userList[position].ImageUrl)
+                        intent.putExtra("productName", userList[position].product)
+                        intent.putExtra("productDescription", userList[position].catagory)
+                        intent.putExtra("productweight", userList[position].weight)
                         startActivity(intent)
                     }
                 })
