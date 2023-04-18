@@ -27,8 +27,5 @@ class Descriptionpage : AppCompatActivity() {
         findViewById<TextView>(R.id.pname).text = productName
         findViewById<TextView>(R.id.pdes).text = productDescription
 
-
-
-
     }
 }

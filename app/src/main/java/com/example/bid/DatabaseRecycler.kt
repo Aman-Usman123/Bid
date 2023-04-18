@@ -77,8 +77,8 @@ class DatabaseRecycler : AppCompatActivity() {
             when(it.itemId)
             {
                 R.id.Sell->{ startActivity(Intent(this, sellActivity::class.java))}
-
-
+                R.id.home->{ startActivity(Intent(this, DatabaseRecycler::class.java))}
+                R.id.setting->{ startActivity(Intent(this, Settings::class.java))}
             }
             true
 

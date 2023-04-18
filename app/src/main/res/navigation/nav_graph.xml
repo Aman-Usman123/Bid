@@ -18,7 +18,11 @@
         android:id="@+id/registrationfragment"
         android:name="com.example.bid.registrationfragment"
         android:label="fragment_registrationfragment"
-        tools:layout="@layout/fragment_registrationfragment" />
+        tools:layout="@layout/fragment_registrationfragment" >
+        <action
+            android:id="@+id/action_registrationfragment_to_loginfragement"
+            app:destination="@id/loginfragement" />
+    </fragment>
     <fragment
         android:id="@+id/startupapp"
         android:name="com.example.bid.startupapp"

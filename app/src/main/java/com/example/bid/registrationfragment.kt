@@ -11,7 +11,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.actionCodeSettings
 import com.google.firebase.auth.ktx.auth
@@ -36,7 +38,7 @@ private lateinit var firebaseAuth: FirebaseAuth
 
         firebaseAuth=FirebaseAuth.getInstance()
 val btn =v.findViewById<Button>(R.id.registerbtn)
-
+val login=v.findViewById<TextView>(R.id.logtext)
         btn.setOnClickListener {
 
             val firstname = v.findViewById<EditText>(R.id.firstname).text.toString()
@@ -71,6 +73,15 @@ firebaseAuth.createUserWithEmailAndPassword(Emails,passwords).addOnCompleteListe
 {
     Toast.makeText(requireContext(),"Email or password cannot be empty",Toast.LENGTH_SHORT).show()
 }
+
+        }
+        login.setOnClickListener {
+
+
+                findNavController().navigate(R.id.action_registrationfragment_to_loginfragement)
+
+
+
 
         }
 

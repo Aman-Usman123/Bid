@@ -30,7 +30,7 @@
       app:layout_constraintHorizontal_bias="0.056"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintVertical_bias="0.382" />
+      app:layout_constraintVertical_bias="0.386" />
 
   <TextView
       android:id="@+id/textView14"
@@ -47,20 +47,6 @@
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintVertical_bias="0.575" />
-
-  <TextView
-      android:id="@+id/pdes"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:textColor="@color/black"
-      android:textSize="14dp"
-      android:textStyle="bold"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.075"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintVertical_bias="0.668" />
 
   <androidx.appcompat.widget.AppCompatButton
       android:id="@+id/button"
@@ -89,4 +75,19 @@
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintVertical_bias="0.474" />
+
+  <TextView
+      android:id="@+id/pdes"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="TextView"
+      android:textSize="14dp"
+      android:textStyle="bold"
+      android:textColor="@color/black"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.045"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.654" />
 </androidx.constraintlayout.widget.ConstraintLayout>

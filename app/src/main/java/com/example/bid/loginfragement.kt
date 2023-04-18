@@ -36,7 +36,7 @@ private lateinit var firebaseAuth:FirebaseAuth
         login.setOnClickListener {
             val passwords = view.findViewById<EditText>(R.id.passwordlogin).text.toString()
             val Emails = view.findViewById<EditText>(R.id.email1).text.toString()
-val currentuser=FirebaseAuth.getInstance().currentUser
+
             if(Emails.isNotEmpty()&& passwords.isNotEmpty())
             {
                 firebaseAuth.signInWithEmailAndPassword(Emails,passwords).addOnCompleteListener {
