@@ -1,5 +1,6 @@
 package com.example.bid
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
@@ -39,4 +40,12 @@ class Settings : AppCompatActivity() {
             return true
         }
         return super.onOptionsItemSelected(item)
+    }
+    override fun onBackPressed() {
+        // Start the new activity
+        val intent = Intent(this, DatabaseRecycler::class.java)
+        startActivity(intent)
+
+        // Call super.onBackPressed() to exit the current activity
+        super.onBackPressed()
     }}

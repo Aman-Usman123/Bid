@@ -1,6 +1,7 @@
 package com.example.bid
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.widget.Button
@@ -85,6 +86,14 @@ val imageview=findViewById<ImageView>(R.id.imageo)
             }
 
             }
+    override fun onBackPressed() {
+        // Start the new activity
+        val intent = Intent(this, DatabaseRecycler::class.java)
+        startActivity(intent)
+
+        // Call super.onBackPressed() to exit the current activity
+        super.onBackPressed()
+    }
            }
 
 
