@@ -1,14 +1,86 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Aboutapp">
+    android:layout_height="match_parent">
 
-    <!-- TODO: Update blank fragment layout -->
+    <!-- App icon and name -->
+    <ImageView
+        android:id="@+id/app_icon"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        android:src="@mipmap/ic_launcher" />
+
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:id="@+id/app_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/app_icon"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:text="My App"
+        android:textSize="24sp" />
 
-</FrameLayout>
+    <!-- App version -->
+    <TextView
+        android:id="@+id/app_version"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/app_name"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:text="Version 1.0"
+        android:textSize="16sp" />
+
+    <!-- App description -->
+    <TextView
+        android:id="@+id/app_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/app_version"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="This is a great app that does amazing things."
+        android:textSize="18sp" />
+
+    <!-- Credits -->
+    <TextView
+        android:id="@+id/credits"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/app_description"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        android:text="Credits:"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/credit_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/credits"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:text="Aman Usman (Full Stack Developer)"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/credit_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/credit_1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:text="Moheeb Javed(Designer)"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/credit_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/credit_2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:text="Zeeshan Zaheer(Designer)"
+        android:textSize="16sp" />
+</RelativeLayout>

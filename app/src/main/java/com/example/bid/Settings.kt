@@ -1,10 +1,12 @@
 package com.example.bid
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 
@@ -24,7 +26,14 @@ class Settings : AppCompatActivity() {
         navView.setNavigationItemSelectedListener {
 
             when(it.itemId)
-            {R.id.drawer_item_1-> Toast.makeText(applicationContext,"Clicked Home", Toast.LENGTH_SHORT).show()
+            {R.id.drawer_item_1->  {
+                val fragment = Aboutapp()
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.drwerlay, fragment)
+                    .commit()
+                drawerLayout.closeDrawer(GravityCompat.START)
+                true
+            }
                 R.id.drawer_item_2-> Toast.makeText(applicationContext,"Clicked Setting", Toast.LENGTH_SHORT).show()
 
             }
@@ -39,4 +48,12 @@ class Settings : AppCompatActivity() {
             return true
         }
         return super.onOptionsItemSelected(item)
+    }
+    override fun onBackPressed() {
+        // Start the new activity
+        val intent = Intent(this, DatabaseRecycler::class.java)
+        startActivity(intent)
+
+        // Call super.onBackPressed() to exit the current activity
+        super.onBackPressed()
     }}

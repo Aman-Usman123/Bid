@@ -80,9 +80,6 @@ firebaseAuth.createUserWithEmailAndPassword(Emails,passwords).addOnCompleteListe
 
                 findNavController().navigate(R.id.action_registrationfragment_to_loginfragement)
 
-
-
-
         }
 
 
