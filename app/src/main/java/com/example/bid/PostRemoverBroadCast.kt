@@ -1,5 +1,6 @@
 package com.example.bid
 
+import android.annotation.SuppressLint
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
@@ -21,6 +22,7 @@ class PostRemoverBroadCast : BroadcastReceiver() {
         }
     }
 
+    @SuppressLint("SuspiciousIndentation")
     private fun removeThisPostFromFireBase(postId: String) {
       val databaseReference= FirebaseDatabase.getInstance().getReference("UserImagesData")
         databaseReference.child(postId).removeValue().addOnCompleteListener { 
