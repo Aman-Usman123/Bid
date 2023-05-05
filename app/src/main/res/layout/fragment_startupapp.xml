@@ -9,7 +9,7 @@
 
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button1"
+        android:id="@+id/getstarted"
         android:layout_width="220dp"
         android:layout_height="wrap_content"
         android:text="Get Started"

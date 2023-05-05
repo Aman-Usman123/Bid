@@ -13,7 +13,6 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.actionCodeSettings
 import com.google.firebase.auth.ktx.auth
@@ -113,9 +112,11 @@ firebaseAuth.createUserWithEmailAndPassword(Emails,passwords).addOnCompleteListe
 
         }
         login.setOnClickListener {
+            val firstFragment = loginfragement()
 
+            val transaction = fragmentManager?.beginTransaction()
+            transaction?.replace(R.id.mainsss,firstFragment)?.commit()
 
-                findNavController().navigate(R.id.action_registrationfragment_to_loginfragement)
 
         }
 

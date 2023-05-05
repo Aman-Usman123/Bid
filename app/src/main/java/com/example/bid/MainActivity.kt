@@ -9,8 +9,13 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        val fragmentManager = supportFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+
+        val firstFragment = startupapp()
+        fragmentTransaction.add(R.id.mainsss, firstFragment)
+        fragmentTransaction.commit()
 
 
-      //  startActivity(Intent(this,DatabaseRecycler::class.java))
     }
 }

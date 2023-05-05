@@ -11,7 +11,6 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 
 class loginfragement : Fragment() {
@@ -26,9 +25,11 @@ private lateinit var firebaseAuth:FirebaseAuth
       val view= inflater.inflate(R.layout.fragment_loginfragement, container, false)
         val register=view.findViewById<TextView>(R.id.registertext)
         register.setOnClickListener {
-            findNavController().navigate(R.id.action_loginfragement_to_registrationfragment)
 
+            val firstFragment = registrationfragment()
 
+            val transaction = fragmentManager?.beginTransaction()
+            transaction?.replace(R.id.mainsss,firstFragment)?.commit()
 
         }
         firebaseAuth=FirebaseAuth.getInstance()
