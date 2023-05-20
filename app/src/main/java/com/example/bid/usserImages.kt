@@ -3,7 +3,7 @@ package com.example.bid
 import java.security.Timestamp
 
 data class usserImages(
-
+    var idofproduct:String?=null,
     var ImageUrl:String?=null,
     var product:String?=null,
     var catagory:String?=null,

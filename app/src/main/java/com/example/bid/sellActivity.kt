@@ -66,6 +66,7 @@ class sellActivity : AppCompatActivity() {
 
                         val uid = FirebaseAuth.getInstance().currentUser!!.uid
                         val imageMap1 = mapOf(
+                            "idofproduct" to uid,
                             "ImageUrl" to downlaodUrl.toString(),
                             "product" to product.text.toString(),
                             "catagory" to catagory.text.toString(),
@@ -74,11 +75,13 @@ class sellActivity : AppCompatActivity() {
 
                         )
 
-                        val databaseReference =
-                            FirebaseDatabase.getInstance().getReference("UserImagesData")
+                        val databaseReference = FirebaseDatabase.getInstance().getReference("UserPosts")
                         val timestamp=ServerValue.TIMESTAMP
+                        databaseReference.child(uid).child("BidsRecord").setValue(null)
+
                         databaseReference.child(uid).child("UserInfo").setValue(imageMap1)
                         databaseReference.child(uid).child("timestamp").setValue(timestamp)
+
                             .addOnSuccessListener {
 
                                 Toast.makeText(this, "Successfully inserted", Toast.LENGTH_SHORT)
@@ -93,7 +96,6 @@ class sellActivity : AppCompatActivity() {
 
 
         }
-
 
     }
 

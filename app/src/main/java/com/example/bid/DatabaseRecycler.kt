@@ -30,12 +30,13 @@ class DatabaseRecycler : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false)
         userList= arrayListOf()
         adapter = imageAdapter(userList,this)
-                                adapter.setOnItemClickListener(object : imageAdapter.OnItemClickListener {
+        adapter.setOnItemClickListener(object : imageAdapter.OnItemClickListener {
                             override fun onItemClick(position: Int) {
                                 // Handle click event here
 
                                 val intent =
                                     Intent(this@DatabaseRecycler, Descriptionpage::class.java)
+                                intent.putExtra("idofproduct", userList[position].idofproduct)
                                 intent.putExtra("productImage", userList[position].ImageUrl)
                                 intent.putExtra("productName", userList[position].product)
                                 intent.putExtra("productDescription", userList[position].catagory)
@@ -46,10 +47,9 @@ class DatabaseRecycler : AppCompatActivity() {
 
 
                       recyclerView.adapter = adapter
-        databaseReference=FirebaseDatabase.getInstance().getReference("UserImagesData")
+        databaseReference=FirebaseDatabase.getInstance().getReference("UserPosts")
 databaseReference.addValueEventListener(object : ValueEventListener{
     override fun onDataChange(snapshot: DataSnapshot) {
-        Log.d("PostRemoverBroadCast", "onDataChange:called ")
         userList.clear()
             if(snapshot.exists())
             {
