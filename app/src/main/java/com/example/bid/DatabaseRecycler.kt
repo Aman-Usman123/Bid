@@ -95,63 +95,6 @@ databaseReference.addValueEventListener(object : ValueEventListener{
     }
 
 })
-//         databaseReference.addValueEventListener(object:ValueEventListener{
-//            override fun onDataChange(snapshot: DataSnapshot) {
-//               userList.clear()
-//                if (snapshot.exists()) {
-//                    for (dataSnapshot in snapshot.children) {
-//
-//                        val user1 = dataSnapshot.child("UserInfo").getValue(usserImages::class.java)
-//
-//
-//                        val timestampRef = databaseReference.child(uid).child("timestamp")
-//                        timestampRef.addValueEventListener(object : ValueEventListener {
-//                            override fun onDataChange(datasSnapshot: DataSnapshot) {
-//                                // Get the timestamp value from the dataSnapshot
-//                               val timestamp = datasSnapshot.getValue(Long::class.java)
-//
-//                                // Get the current time in milliseconds
-//                              //  val currentTime = System.currentTimeMillis()
-//                                // Compare the timestamp value with the current time
-//                                if (user1 != null ) {
-//                                    // The timestamp is less than 1 minute old, so add the product
-//                                    userList.add(user1)
-//
-//                                }
-//                            }
-//
-//                            override fun onCancelled(error: DatabaseError) {
-//                                // Handle errors here
-//                            }
-//                        })
-//
-//
-//                        val adapter = imageAdapter(userList, this@DatabaseRecycler)
-//                        recyclerView.adapter = adapter
-//                        adapter.setOnItemClickListener(object : imageAdapter.OnItemClickListener {
-//                            override fun onItemClick(position: Int) {
-//                                // Handle click event here
-//
-//                                val intent =
-//                                    Intent(this@DatabaseRecycler, Descriptionpage::class.java)
-//                                intent.putExtra("productImage", userList[position].ImageUrl)
-//                                intent.putExtra("productName", userList[position].product)
-//                                intent.putExtra("productDescription", userList[position].catagory)
-//                                intent.putExtra("productweight", userList[position].weight)
-//                                startActivity(intent)
-//                            }
-//                        })
-//
-//                    }
-//                }
-//            }
-//
-//            override fun onCancelled(error: DatabaseError) {
-//
-//                Toast.makeText(this@DatabaseRecycler,error.toString(),Toast.LENGTH_SHORT).show()
-//            }
-//
-//         })
 
         val bottomnavigationview:BottomNavigationView=findViewById(R.id.bottomNavigationView)
 

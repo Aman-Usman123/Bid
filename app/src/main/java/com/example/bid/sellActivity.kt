@@ -83,7 +83,11 @@ class sellActivity : AppCompatActivity() {
                         databaseReference.child(uid).child("timestamp").setValue(timestamp)
 
                             .addOnSuccessListener {
-
+                              product.text.clear()
+                              catagory.text.clear()
+                                sizes.text.clear()
+                                weight.text.clear()
+                               imageview.setImageDrawable(null)
                                 Toast.makeText(this, "Successfully inserted", Toast.LENGTH_SHORT)
                                     .show()
                             }

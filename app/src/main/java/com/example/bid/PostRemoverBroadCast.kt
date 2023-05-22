@@ -20,6 +20,7 @@ class PostRemoverBroadCast : BroadcastReceiver() {
             if (postId != null) {
                 getHighestBid(postId)
 
+                Log.d(TAG, "getHighestBid: ${postId}")
             }
         }
     }

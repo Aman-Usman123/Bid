@@ -2,13 +2,16 @@ package com.example.bid
 
 import android.annotation.SuppressLint
 import android.content.ContentValues.TAG
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.TextUtils
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -19,6 +22,7 @@ import com.squareup.picasso.Picasso
 class Descriptionpage : AppCompatActivity() {
 
     private lateinit var firebase:FirebaseDatabase
+    private lateinit var numberField: EditText
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,18 +44,44 @@ saveBBIDRecord()
 
 }
     fun saveBBIDRecord() {
-        val amount=findViewById<EditText>(R.id.Amount)
+
         val id=intent.getStringExtra("idofproduct")
         // Generate a unique key for the new record
         if(id!=null){
-            var databaseRefrence=FirebaseDatabase.getInstance().getReference("Bids")
-        val uids=FirebaseAuth.getInstance().currentUser!!.uid
-            val biddata = mapOf(
-                "Amount" to amount.text.toString(),
+            numberField = findViewById(R.id.Amounnt)
+            val number = numberField.text.toString().trim()
+            if (number.isEmpty()) {
+                Toast.makeText(getApplicationContext(), "Please Enter Bid Amount", Toast.LENGTH_SHORT).show();
+
+            }
+            else
+            { var databaseRefrence = FirebaseDatabase.getInstance().getReference("Bids")
+                val uids = FirebaseAuth.getInstance().currentUser!!.uid
+                val biddata = mapOf(
+                    "Amount" to numberField.toString(),
                 )
-     //   databaseRefrence.child(id).child("BidsRecord").push(uids)
-        val newRecordRef = databaseRefrence.child(id).child("BidsRecord").child(uids)
+
+                val newRecordRef = databaseRefrence.child(id).child("BidsRecord").child(uids)
 
 
-        newRecordRef.setValue(biddata)
-    }}}
+                newRecordRef.setValue(biddata)
+                Toast.makeText(getApplicationContext(), "Successfully!! Bid Placed", Toast.LENGTH_SHORT).show();
+
+
+            }
+            }
+
+
+
+
+    }
+
+
+
+    override fun onBackPressed() {
+        val intent = Intent(this, DatabaseRecycler::class.java)
+        startActivity(intent)
+        super.onBackPressed()
+
+    }
+}

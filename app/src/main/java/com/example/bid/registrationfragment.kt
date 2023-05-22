@@ -42,18 +42,9 @@ private lateinit var firebaseAuth: FirebaseAuth
 val btn =v.findViewById<Button>(R.id.registerbtn)
 val login=v.findViewById<TextView>(R.id.logtext)
         storageReference= FirebaseStorage.getInstance()
-        val imageviewq=v.findViewById<ImageView>(R.id.imageView23)
-        val uplodcnic=v.findViewById<TextView>(R.id.uplod)
-        val imageGallery=registerForActivityResult(
 
-            ActivityResultContracts.GetContent(),
-            ActivityResultCallback{ imagePath ->
-                imageviewq.setImageURI(imagePath)
-                uri= imagePath!!;
-            })
-        imageviewq.setOnClickListener {
-            imageGallery.launch("image/*")
-        }
+
+
         btn.setOnClickListener {
 
             val firstname = v.findViewById<EditText>(R.id.firstname)
@@ -65,47 +56,40 @@ if(Emails.isNotEmpty()&& passwords.isNotEmpty())
 {
 firebaseAuth.createUserWithEmailAndPassword(Emails,passwords).addOnCompleteListener {
 
-    if(it.isSuccessful)
-
-    {
+    if (it.isSuccessful) {
         val currentUser = FirebaseAuth.getInstance().currentUser
         currentUser?.sendEmailVerification()
             ?.addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    storageReference.getReference("Images").child(System.currentTimeMillis().toString())
-                        .putFile(uri)
 
-                        .addOnSuccessListener {task ->
-                            task.metadata!!.reference!!.downloadUrl.addOnSuccessListener { downlaodUrl ->
-                                // Email sent successfully
-                                val uid = FirebaseAuth.getInstance().currentUser!!.uid
 
-                                val imageMap1 = mapOf(
-                                    "username" to firstname.text.toString(),
-                                    "cnicnumber" to lastname.text.toString(),
-                                    "phnumber" to phones.text.toString(),
-                                    "cnicurl" to downlaodUrl.toString()
-                                    )
-                                val databaseReference =
-                                    FirebaseDatabase.getInstance().getReference("UserImagesData")
-                                databaseReference.child(uid).child("UserInfo").child("UserData")
-                                    .setValue(imageMap1)
+                    val uid = FirebaseAuth.getInstance().currentUser!!.uid
 
-                            }}
+                    val imageMap1 = mapOf(
+                        "username" to firstname.text.toString(),
+                        "cnicnumber" to lastname.text.toString(),
+                        "phnumber" to phones.text.toString(),
 
-                    Toast.makeText(requireContext(),"Go to Your Email Please",Toast.LENGTH_SHORT).show()
+                        )
+                    val databaseReference =
+                        FirebaseDatabase.getInstance().getReference()
+                    databaseReference.child(uid).child("Userinfo")
+                        .setValue(imageMap1)
+
                 } else {
-                    Toast.makeText(requireContext(),"Sorry Try again",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), "Sorry Try again", Toast.LENGTH_SHORT).show()
                 }
             }
 
-    }else
-    {
-        Toast.makeText(requireContext(),"Error occurs Not registered",Toast.LENGTH_SHORT).show()
-    }
-}
+        Toast.makeText(requireContext(), "Go to Your Email Please", Toast.LENGTH_SHORT).show()
 
-}else
+
+    } else {
+        Toast.makeText(requireContext(), "The Email You enter is already taken", Toast.LENGTH_SHORT).show()
+    }
+
+}}
+else
 {
     Toast.makeText(requireContext(),"Email or password cannot be empty",Toast.LENGTH_SHORT).show()
 }

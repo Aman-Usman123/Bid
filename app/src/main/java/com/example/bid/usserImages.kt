@@ -14,5 +14,4 @@ data class usserImages(
     var phnumber:String?=null,
     var cnicurl:String?=null,
     var currentTime:String?=null,
-
 )
