@@ -91,19 +91,6 @@
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintVertical_bias="0.639" />
 
-  <EditText
-      android:id="@+id/Amounnt"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:ems="10"
-      android:inputType="number"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.079"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintVertical_bias="0.775" />
-
   <TextView
       android:id="@+id/textView12"
       android:layout_width="wrap_content"
@@ -114,8 +101,22 @@
       android:textStyle="bold"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.048"
+      app:layout_constraintHorizontal_bias="0.047"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintVertical_bias="0.72" />
+      app:layout_constraintVertical_bias="0.709" />
+
+  <EditText
+      android:id="@+id/amount"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:ems="10"
+      android:inputType="number"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.079"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.798" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

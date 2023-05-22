@@ -45,29 +45,30 @@ saveBBIDRecord()
 }
     fun saveBBIDRecord() {
 
-        val id=intent.getStringExtra("idofproduct")
+        val postid=intent.getStringExtra("idofproduct")
         // Generate a unique key for the new record
-        if(id!=null){
-            numberField = findViewById(R.id.Amounnt)
-            val number = numberField.text.toString().trim()
+        if(postid!=null){
+            numberField = findViewById(R.id.amount)
+            var number = numberField.text.toString()
             if (number.isEmpty()) {
                 Toast.makeText(getApplicationContext(), "Please Enter Bid Amount", Toast.LENGTH_SHORT).show();
 
             }
             else
             { var databaseRefrence = FirebaseDatabase.getInstance().getReference("Bids")
-                val uids = FirebaseAuth.getInstance().currentUser!!.uid
-                val biddata = mapOf(
-                    "Amount" to numberField.toString(),
+                var uids = FirebaseAuth.getInstance().currentUser!!.uid
+                var biddata = mapOf(
+                    "Amount" to number
                 )
 
-                val newRecordRef = databaseRefrence.child(id).child("BidsRecord").child(uids)
+                val newRecordRef = databaseRefrence.child(postid).child(uids)
 
 
                 newRecordRef.setValue(biddata)
                 Toast.makeText(getApplicationContext(), "Successfully!! Bid Placed", Toast.LENGTH_SHORT).show();
+                 databaseRefrence = FirebaseDatabase.getInstance().getReference("UserBids")
 
-
+databaseRefrence.child(uids).child(postid).setValue(biddata)
             }
             }
 
