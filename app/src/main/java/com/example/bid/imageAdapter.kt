@@ -19,7 +19,7 @@ import java.util.concurrent.TimeUnit
 class imageAdapter(val userList:ArrayList<usserImages>
                    , private val context: Context )
 :RecyclerView.Adapter<imageAdapter.imageViewHolder>() {
-    private val timers: MutableList<CountDownTimer> = mutableListOf()
+
     private lateinit var listener: OnItemClickListener
 
     interface OnItemClickListener {
@@ -37,10 +37,10 @@ class imageAdapter(val userList:ArrayList<usserImages>
 
         //   val timerTextView: TextView = itemView.findViewById(R.id.text_diplay)
 
-        val image: ImageView = itemView.findViewById(R.id.imageView2)
-        val tv: TextView = itemView.findViewById(R.id.Tv)
-        val tv1: TextView = itemView.findViewById(R.id.Tv1)
-        val tv2: TextView = itemView.findViewById(R.id.Tv2)
+        val image: ImageView = itemView.findViewById(R.id.imageVi)
+        val tv: TextView = itemView.findViewById(R.id.nametext)
+       // val tv1: TextView = itemView.findViewById(R.id.Tv1)
+       // val tv2: TextView = itemView.findViewById(R.id.Tv2)
 
         init {
 
@@ -71,21 +71,14 @@ class imageAdapter(val userList:ArrayList<usserImages>
 
     override fun onBindViewHolder(holder: imageViewHolder, position: Int) {
 
-        //holder.bind( TimeUnit.MINUTES.toMillis(5))
+
 
         Glide.with(context).load(userList[position].ImageUrl).into(holder.image)
         holder.tv.text = userList[position].product
-        holder.tv1.text = userList[position].catagory
-        holder.tv2.text = userList[position].weight
+        //holder.tv1.text = userList[position].catagory
+        //holder.tv2.text = userList[position].weight
 
-        // }
-        //   override fun onViewRecycled(holder: imageViewHolder) {
-        // Cancel the countdownTimer for this item when it is recycled
-        //  val countdownTimer = holder.itemView.tag as? CountDownTimer
-        // countdownTimer?.cancel()
-        //holder.itemView.tag = null
-        //   super.onViewRecycled(holder)
-        //   }
+
     }
 
 

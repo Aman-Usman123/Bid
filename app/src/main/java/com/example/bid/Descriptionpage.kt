@@ -23,16 +23,19 @@ class Descriptionpage : AppCompatActivity() {
 
     private lateinit var firebase:FirebaseDatabase
     private lateinit var numberField: EditText
+private  var productImage:String?=null
+    private  var productName:String?=null
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_descriptionpage)
         val image= findViewById<ImageView>(R.id.imageview1)
-        val productImage = intent.getStringExtra("productImage")
 
+         productImage = intent.getStringExtra("productImage")
+        productName = intent.getStringExtra("productName")
         Picasso.get().load(productImage).into(image)
         val productDescription = intent.getStringExtra("productDescription")
-        val productName = intent.getStringExtra("productName")
+
         findViewById<TextView>(R.id.pname).text = productName
         findViewById<TextView>(R.id.pdes).text = productDescription
 
@@ -66,9 +69,18 @@ saveBBIDRecord()
 
                 newRecordRef.setValue(biddata)
                 Toast.makeText(getApplicationContext(), "Successfully!! Bid Placed", Toast.LENGTH_SHORT).show();
-                 databaseRefrence = FirebaseDatabase.getInstance().getReference("UserBids")
+               productImage = intent.getStringExtra("productImage")
+                productName = intent.getStringExtra("productName")
+             var userdiplaybids =mapOf(
 
-databaseRefrence.child(uids).child(postid).setValue(biddata)
+                "Productname" to productName,
+                 "Productimage" to productImage,
+                   "Amount" to number
+
+            )
+                 databaseRefrence = FirebaseDatabase.getInstance().getReference("DisplayUserBids")
+
+databaseRefrence.child(uids).child("BiderBids").child(postid).child("Data").setValue(userdiplaybids)
             }
             }
 

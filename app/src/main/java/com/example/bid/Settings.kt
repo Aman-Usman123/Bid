@@ -34,7 +34,15 @@ class Settings : AppCompatActivity() {
                 drawerLayout.closeDrawer(GravityCompat.START)
                 true
             }
-                R.id.drawer_item_2-> Toast.makeText(applicationContext,"Clicked Setting", Toast.LENGTH_SHORT).show()
+                R.id.drawer_item_2->{
+                    val fragment = Userinforecycler()
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.drwerlay, fragment)
+                        .commit()
+                    drawerLayout.closeDrawer(GravityCompat.START)
+                    true
+
+                }
 
             }
             true
