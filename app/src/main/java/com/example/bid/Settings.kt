@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.core.content.ContextCompat.startActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
@@ -57,11 +58,5 @@ class Settings : AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
-    override fun onBackPressed() {
-        // Start the new activity
-        val intent = Intent(this, DatabaseRecycler::class.java)
-        startActivity(intent)
 
-        // Call super.onBackPressed() to exit the current activity
-        super.onBackPressed()
-    }}
+}

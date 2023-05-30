@@ -14,7 +14,7 @@ import com.example.bid.utill.POST_EXPIRE_MAX_TIME
 import com.example.bid.utill.POST_ID_EXPIRED
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.database.*
-
+/*
 
 class DatabaseRecycler : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
@@ -138,5 +138,5 @@ databaseReference.addValueEventListener(object : ValueEventListener{
 
 }
 
-
+*/
 

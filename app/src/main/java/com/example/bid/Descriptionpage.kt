@@ -58,10 +58,14 @@ saveBBIDRecord()
 
             }
             else
-            { var databaseRefrence = FirebaseDatabase.getInstance().getReference("Bids")
+
+            {
+                productName = intent.getStringExtra("productName")
+                var databaseRefrence = FirebaseDatabase.getInstance().getReference("Bids")
                 var uids = FirebaseAuth.getInstance().currentUser!!.uid
                 var biddata = mapOf(
-                    "Amount" to number
+                    "Amount" to number,
+                "ProductName" to productName
                 )
 
                 val newRecordRef = databaseRefrence.child(postid).child(uids)
@@ -87,14 +91,14 @@ databaseRefrence.child(uids).child("BiderBids").child(postid).child("Data").setV
 
 
 
-    }
+    }}
 
 
 
-    override fun onBackPressed() {
-        val intent = Intent(this, DatabaseRecycler::class.java)
+    /* override fun onBackPressed() {
+        val intent = Intent(this, ::class.java)
         startActivity(intent)
         super.onBackPressed()
 
     }
-}
+}*/

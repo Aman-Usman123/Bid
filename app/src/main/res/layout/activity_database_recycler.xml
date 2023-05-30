@@ -5,7 +5,8 @@
     android:id="@+id/secoun"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-  >
+   >
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
@@ -19,8 +20,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerImage"
         android:layout_width="wrap_content"
-
         android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

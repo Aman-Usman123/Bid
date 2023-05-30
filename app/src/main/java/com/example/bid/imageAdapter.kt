@@ -38,6 +38,7 @@ class imageAdapter(val userList:ArrayList<usserImages>
         //   val timerTextView: TextView = itemView.findViewById(R.id.text_diplay)
 
         val image: ImageView = itemView.findViewById(R.id.imageVi)
+
         val tv: TextView = itemView.findViewById(R.id.nametext)
        // val tv1: TextView = itemView.findViewById(R.id.Tv1)
        // val tv2: TextView = itemView.findViewById(R.id.Tv2)
@@ -73,10 +74,10 @@ class imageAdapter(val userList:ArrayList<usserImages>
 
 
 
-        Glide.with(context).load(userList[position].ImageUrl).into(holder.image)
+
+        Glide.with(context).load(userList[position].ImageUrl).centerCrop().into(holder.image)
         holder.tv.text = userList[position].product
-        //holder.tv1.text = userList[position].catagory
-        //holder.tv2.text = userList[position].weight
+
 
 
     }
