@@ -12,6 +12,8 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.messaging.FirebaseMessaging
 
 class loginfragement : Fragment() {
 
@@ -46,7 +48,17 @@ private lateinit var firebaseAuth:FirebaseAuth
                     { val varification=firebaseAuth.currentUser?.isEmailVerified
                         if(varification==true)
 
-                        { val i=Intent(this@loginfragement.requireContext(),DatabaseRecycler::class.java)
+                        { FirebaseMessaging.getInstance().token
+                            .addOnCompleteListener { task ->
+                                if (task.isSuccessful) {
+                                    var fcmToken = task.result
+                                   generating_fcmtoken(fcmToken)
+                                } else {
+                                  Toast.makeText(requireContext(),"Not Generated Fcm",Toast.LENGTH_SHORT).show()
+                                }
+                            }
+
+                            val i=Intent(this@loginfragement.requireContext(),DatabaseRecycler::class.java)
                         startActivity(i)
                     }else
                         {
@@ -69,6 +81,18 @@ private lateinit var firebaseAuth:FirebaseAuth
 
         return view
     }
+    fun generating_fcmtoken(fcmToken:String)
+    {
+        val userId = FirebaseAuth.getInstance().currentUser!!.uid // Replace with the actual user ID
+        val fcmTokenno = fcmToken // Replace with the retrieved FCM token
+
+        val database = FirebaseDatabase.getInstance()
+        val userRef = database.getReference("UsersIdWithFcmToken").child(userId)
+        userRef.setValue(fcmTokenno)
+
+
+    }
+
 
 
 }

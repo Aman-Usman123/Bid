@@ -6,7 +6,13 @@ import android.content.Context
 import android.content.Intent
 import android.util.Log
 import com.example.bid.utill.*
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+
+import com.google.firebase.messaging.RemoteMessage
+import com.google.firebase.messaging.FirebaseMessaging
 
 
 private const val TAG = "PostRemoverBroadCast"
@@ -26,11 +32,13 @@ class PostRemoverBroadCast : BroadcastReceiver() {
     }
 
 
+
+
     private fun getHighestBid(postId: String) {
         Log.d(TAG, "getHighestBid: ${postId}")
         val listOfBids = ArrayList<Pair<String, Double>>()
         val databaseReference = FirebaseDatabase.getInstance().getReference("Bids")
-        databaseReference.child(postId).child("BidsRecord").get().addOnCompleteListener {
+        databaseReference.child(postId).get().addOnCompleteListener {
             Log.d(TAG, "getHighestBid: ${it.isSuccessful} && ${it.result.exists()}")
             if (it.isSuccessful && it.result.exists()) {
 
@@ -62,7 +70,16 @@ class PostRemoverBroadCast : BroadcastReceiver() {
             TAG,
             "sendNotificationToWinner: ${highestBidder.first} won bid on ${postId} by bidding amount = ${highestBidder.second}"
         )
+        val userId = highestBidder.first // Replace with the user ID you want to send the notification to
+        val notificationTitle = "Notification Title"
+        val notificationBody = "Notification Body"
+
+        sendNotificationToUserq(userId, notificationTitle, notificationBody)
+
+
+
     }
+
 
     @SuppressLint("SuspiciousIndentation")
     private fun removeThisPostFromFireBase(postId: String) {
@@ -75,4 +92,33 @@ class PostRemoverBroadCast : BroadcastReceiver() {
             }
         }
     }
+    private fun sendNotificationToUserq(userId: String, notificationTitle: String, notificationBody: String) {
+        val databaseReference = FirebaseDatabase.getInstance().reference
+        databaseReference.child("UsersIdWithFcmToken").child(userId)
+            .addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    val token = dataSnapshot.value as? String
+                    if (token != null) {
+                        val notificationSender =PushNotification()
+                        val userToken = token
+                        val title = "Notification Title"
+                        val message = "Notification Message"
+
+                        notificationSender.createAndSendNotification(userId, userToken)
+                        // Send the notification using the FCM token
+
+
+                    } else {
+                        // Handle case where token is null or not found
+                        Log.d(TAG,"Token Not Found== ${token}" )
+                    }
+                }
+
+                override fun onCancelled(databaseError: DatabaseError) {
+                    // Handle error
+                }
+            })
+    }
+
+
 }
