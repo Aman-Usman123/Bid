@@ -21,7 +21,6 @@ import com.squareup.picasso.Picasso
 
 class Descriptionpage : AppCompatActivity() {
 
-    private lateinit var firebase:FirebaseDatabase
     private lateinit var numberField: EditText
 private  var productImage:String?=null
     private  var productName:String?=null
@@ -38,7 +37,11 @@ private  var productImage:String?=null
 
         findViewById<TextView>(R.id.pname).text = productName
         findViewById<TextView>(R.id.pdes).text = productDescription
-
+val Recharge=findViewById<Button>(R.id.Recharge)
+        Recharge.setOnClickListener {
+           val intent= Intent(this,Recharge_Account::class.java)
+            startActivity(intent)
+        }
        val btn=findViewById<Button>(R.id.buttonbid)
         btn.setOnClickListener {
 
@@ -50,48 +53,70 @@ saveBBIDRecord()
 
         val postid=intent.getStringExtra("idofproduct")
         // Generate a unique key for the new record
-        if(postid!=null){
+        if(postid!=null) {
             numberField = findViewById(R.id.amount)
             var number = numberField.text.toString()
             if (number.isEmpty()) {
-                Toast.makeText(getApplicationContext(), "Please Enter Bid Amount", Toast.LENGTH_SHORT).show();
+                Toast.makeText(
+                    getApplicationContext(),
+                    "Please Enter Bid Amount",
+                    Toast.LENGTH_SHORT
+                ).show();
 
-            }
-            else
-
-            {
-                productName = intent.getStringExtra("productName")
-                var databaseRefrence = FirebaseDatabase.getInstance().getReference("Bids")
+            } else {
                 var uids = FirebaseAuth.getInstance().currentUser!!.uid
-                var biddata = mapOf(
-                    "Amount" to number,
-                "ProductName" to productName
+                var databaseReference =
+                    FirebaseDatabase.getInstance().getReference("Registration_Record").child(uids)
+                databaseReference.addValueEventListener(object : ValueEventListener {
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        if (snapshot.exists()) {
+                            val value = snapshot.child("Balance").value as String
+                            if (value >= 1000.toString()) {
+                                var databaseRefrence2 =
+                                    FirebaseDatabase.getInstance().getReference("Bids")
+
+                                var biddata = mapOf(
+                                    "Amount" to number,
+                                    "ProductName" to productName
+                                )
+
+                                val newRecordRef = databaseRefrence2.child(postid).child(uids)
+
+
+                                newRecordRef.setValue(biddata)
+                                Toast.makeText(
+                                    getApplicationContext(),
+                                    "Successfully!! Bid Placed",
+                                    Toast.LENGTH_SHORT
+                                ).show();
+                            }else
+                            {
+                                Toast.makeText(getApplicationContext(), "Your Balance is less than 1000 Plz Recharge Acoount", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }
+                    override fun onCancelled(error: DatabaseError) {
+                        Unit
+                    }
+
+                })
+                var userdiplaybids = mapOf(
+
+                    "Productname" to productName,
+                    "Productimage" to productImage,
+                    "Amount" to number
+
                 )
+                val databaseRefrences = FirebaseDatabase.getInstance().getReference("DisplayUserBids")
 
-                val newRecordRef = databaseRefrence.child(postid).child(uids)
+                databaseRefrences.child(uids).child("BiderBids").child(postid).child("Data")
+                    .setValue(userdiplaybids)
 
-
-                newRecordRef.setValue(biddata)
-                Toast.makeText(getApplicationContext(), "Successfully!! Bid Placed", Toast.LENGTH_SHORT).show();
-               productImage = intent.getStringExtra("productImage")
-                productName = intent.getStringExtra("productName")
-             var userdiplaybids =mapOf(
-
-                "Productname" to productName,
-                 "Productimage" to productImage,
-                   "Amount" to number
-
-            )
-                 databaseRefrence = FirebaseDatabase.getInstance().getReference("DisplayUserBids")
-
-databaseRefrence.child(uids).child("BiderBids").child(postid).child("Data").setValue(userdiplaybids)
-            }
             }
 
 
-
-
-    }}
+        }}
+    }
 
 
 

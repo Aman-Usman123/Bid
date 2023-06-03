@@ -45,7 +45,6 @@ class PostRemoverBroadCast : BroadcastReceiver() {
                 it.result.children.forEach { data ->
                     val bidderId = data.key!!
                     val bidAmount = data.child("Amount").value as String
-                    val productName=data.child("ProductName").value as String
                     Log.d(TAG, "getHighestBid: bidAmound =  ${bidAmount}")
                     val bid = Pair(bidderId, bidAmount.toDouble())
                     listOfBids.add(bid)

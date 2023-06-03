@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
@@ -11,22 +12,19 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.database.*
 
 class playing : AppCompatActivity() {
-    private lateinit var recyclerView: RecyclerView
-    private  var userList=ArrayList<usserImages>()
-    private lateinit var databaseReference: DatabaseReference
-    private lateinit var adapter: imageAdapter
 
     @SuppressLint("MissingInflatedId")
-
+    private lateinit var database: DatabaseReference
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_playing)
         val fragmentManager = supportFragmentManager
         val fragmentTransaction = fragmentManager.beginTransaction()
-
         val firstFragment = Databaserecyclerr()
         fragmentTransaction.add(R.id.playing, firstFragment)
         fragmentTransaction.commit()
+
         val bottomnavigationview: BottomNavigationView = findViewById(R.id.bottomNavigationView)
 
         bottomnavigationview.setOnItemSelectedListener {

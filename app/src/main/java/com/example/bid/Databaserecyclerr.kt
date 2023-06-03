@@ -1,5 +1,6 @@
 package com.example.bid
 
+import android.annotation.SuppressLint
 import android.app.AlarmManager
 import android.app.PendingIntent
 import android.content.Intent
@@ -10,6 +11,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat.finishAffinity
 import androidx.core.content.ContextCompat.getSystemService
@@ -18,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.bid.utill.POST_EXPIRE_MAX_TIME
 import com.example.bid.utill.POST_ID_EXPIRED
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 
 class Databaserecyclerr : Fragment() {
@@ -37,6 +40,25 @@ class Databaserecyclerr : Fragment() {
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         userList = arrayListOf()
         adapter = imageAdapter(userList, requireContext())
+        val uid=FirebaseAuth.getInstance().currentUser!!.uid
+        databaseReference = FirebaseDatabase.getInstance().reference
+        databaseReference.child("Registration_Record").child(uid).addListenerForSingleValueEvent(object : ValueEventListener {
+            @SuppressLint("MissingInflatedId")
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    val user = dataSnapshot.getValue(usserImages::class.java)
+
+                    val name=v.findViewById<TextView>(R.id.name)
+                    val balance=v.findViewById<TextView>(R.id.balance)
+                     name.text = user?.username
+                   balance.text = user?.Balance
+                }
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                // Handle any errors
+            }
+        })
         adapter.setOnItemClickListener(object : imageAdapter.OnItemClickListener {
             override fun onItemClick(position: Int) {
                 // Handle click event here

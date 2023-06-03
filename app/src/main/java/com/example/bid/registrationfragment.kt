@@ -47,8 +47,8 @@ val login=v.findViewById<TextView>(R.id.logtext)
 
         btn.setOnClickListener {
 
-            val firstname = v.findViewById<EditText>(R.id.firstname)
-            val lastname = v.findViewById<EditText>(R.id.lastname)
+            val firstname = v.findViewById<EditText>(R.id.firstname).text.toString()
+            val lastname = v.findViewById<EditText>(R.id.lastname).text.toString()
             val phones = v.findViewById<EditText>(R.id.phonenumber)
             val passwords = v.findViewById<EditText>(R.id.password).text.toString()
             val Emails = v.findViewById<EditText>(R.id.emailf).text.toString()
@@ -65,15 +65,13 @@ firebaseAuth.createUserWithEmailAndPassword(Emails,passwords).addOnCompleteListe
 
                     val uid = FirebaseAuth.getInstance().currentUser!!.uid
 
-                    val imageMap1 = mapOf(
-                        "username" to firstname.text.toString(),
-                        "cnicnumber" to lastname.text.toString(),
-                        "phnumber" to phones.text.toString(),
-
-                        )
+                    val imageMap1 = HashMap<String,Any?>()
+                        imageMap1["username"]=firstname
+                    imageMap1["cnicnumber"]=lastname
+                        imageMap1["Balance"]=""
                     val databaseReference =
                         FirebaseDatabase.getInstance().getReference()
-                    databaseReference.child(uid).child("Userinfo")
+                    databaseReference.child("Registration_Record").child(uid)
                         .setValue(imageMap1)
 
                 } else {

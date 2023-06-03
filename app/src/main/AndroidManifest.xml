@@ -16,10 +16,10 @@
         android:theme="@style/Theme.Bid"
         tools:targetApi="33">
         <activity
-            android:name=".playing"
+            android:name=".Recharge_Account"
             android:exported="false" />
         <activity
-            android:name=".Playing"
+            android:name=".playing"
             android:exported="false" />
         <activity
             android:name=".Settings"
@@ -27,15 +27,6 @@
         <activity
             android:name=".Descriptionpage"
             android:exported="false" />
-        <activity
-            android:name=".DatabaseRecycler"
-            android:exported="false"
-            android:noHistory="true" />
-        <activity
-            android:name=".sellActivity"
-            android:exported="false"
-            android:label="@string/title_activity_sell"
-            android:theme="@style/Theme.Bid.NoActionBar" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
