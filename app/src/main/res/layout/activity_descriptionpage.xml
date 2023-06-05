@@ -45,7 +45,7 @@
       app:layout_constraintHorizontal_bias="0.069"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintVertical_bias="0.575" />
+      app:layout_constraintVertical_bias="0.541" />
 
   <androidx.appcompat.widget.AppCompatButton
       android:id="@+id/buttonbid"
@@ -64,16 +64,16 @@
       android:id="@+id/pname"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
+      android:text="TextView"
       android:textColor="@color/black"
       android:textSize="14dp"
       android:textStyle="bold"
-      android:text="TextView"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintHorizontal_bias="0.045"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintVertical_bias="0.474" />
+      app:layout_constraintVertical_bias="0.45" />
 
   <TextView
       android:id="@+id/pdes"
@@ -88,7 +88,7 @@
       app:layout_constraintHorizontal_bias="0.045"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintVertical_bias="0.639" />
+      app:layout_constraintVertical_bias="0.599" />
 
   <TextView
       android:id="@+id/textView12"
@@ -125,9 +125,24 @@
       android:text="Recharge App"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.827"
+      app:layout_constraintHorizontal_bias="0.559"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintVertical_bias="0.023" />
+      app:layout_constraintVertical_bias="0.963" />
+
+  <TextView
+      android:id="@+id/highestbid"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+     android:textStyle="bold"
+      android:textSize="18sp"
+      android:textColor="@color/black"
+
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.875"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.022" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
