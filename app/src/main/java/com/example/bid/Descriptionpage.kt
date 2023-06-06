@@ -131,6 +131,7 @@ saveBBIDRecord()
                 {
                     it.result.children.forEach {bid->
                         val data=bid.value
+
                         val amount=bid.child("Amount").value as String
                           listifBids.add(amount.toDouble())
 

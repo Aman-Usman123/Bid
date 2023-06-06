@@ -9,6 +9,7 @@
       android:id="@+id/imageview1"
       android:layout_width="match_parent"
       android:layout_height="170dp"
+      android:scaleType="fitCenter"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintHorizontal_bias="1.0"
@@ -131,18 +132,32 @@
       app:layout_constraintVertical_bias="0.963" />
 
   <TextView
+      android:id="@+id/textView24"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Highest Bid Till Now"
+      android:textColor="#EC2819"
+      android:textSize="18sp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.093"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.029" />
+
+  <TextView
       android:id="@+id/highestbid"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-     android:textStyle="bold"
-      android:textSize="18sp"
+      android:text="0"
       android:textColor="@color/black"
-
+      android:textSize="16sp"
+      android:textStyle="bold"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.875"
-      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintHorizontal_bias="0.477"
+      app:layout_constraintStart_toEndOf="@+id/textView24"
       app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintVertical_bias="0.022" />
+      app:layout_constraintVertical_bias="0.029" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
