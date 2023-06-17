@@ -90,10 +90,9 @@ saveBBIDRecord()
                                     "Successfully!! Bid Placed Please Refresh the Page to see Your Bid",
                                     Toast.LENGTH_SHORT
                                 ).show();
-                                fun jj()
-                                {
+                                numberField.text.clear()
 
-                                }
+
                             }else
                             {
                                 Toast.makeText(getApplicationContext(), "Your Balance is less than 1000 Plz Recharge Acoount", Toast.LENGTH_SHORT).show();
@@ -141,7 +140,7 @@ saveBBIDRecord()
                     listifBids.forEach {amount->
                     if(amount > highestamount)
                     {
-                      highestamount=amount
+                        highestamount=amount
                         Log.d(TAG,"Highest amount${highestamount}")
                     }
 

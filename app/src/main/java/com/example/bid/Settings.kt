@@ -122,7 +122,7 @@ class Settings : AppCompatActivity() {
 
         private fun setupNavigationView() {
             val navigationView = findViewById<NavigationView>(R.id.navvieew)
-            val menu = navigationView.menu
+
             val headerView = navigationView.getHeaderView(0)
 
             val databaseReference = FirebaseDatabase.getInstance().reference
