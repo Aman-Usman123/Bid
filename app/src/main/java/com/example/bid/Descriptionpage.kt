@@ -22,8 +22,7 @@ private const val TAG="Description"
 class Descriptionpage : AppCompatActivity() {
 
     private lateinit var numberField: EditText
-
-private  var productImage:String?=null
+    private  var productImage:String?=null
     private  var productName:String?=null
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -119,7 +118,8 @@ saveBBIDRecord()
             }
 
 
-        }}
+        }
+    }
     private fun findhighestidamount() {
         var postid=intent.getStringExtra("idofproduct")
         if (postid != null) {
@@ -128,7 +128,7 @@ saveBBIDRecord()
             databaseReference.child(postid).get().addOnCompleteListener {
                 if(it.isSuccessful && it.result.exists())
                 {
-                    it.result.children.forEach {bid->
+                    it.result.children.forEach {  bid->
                         val data=bid.value
 
                         val amount=bid.child("Amount").value as String

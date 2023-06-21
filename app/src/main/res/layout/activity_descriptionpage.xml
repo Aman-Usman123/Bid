@@ -52,7 +52,7 @@
       android:id="@+id/buttonbid"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:background="#009688"
+      android:background="#2196F3"
       android:text="Place Bid"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
@@ -119,17 +119,18 @@
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintVertical_bias="0.798" />
 
-  <Button
+  <androidx.appcompat.widget.AppCompatButton
       android:id="@+id/Recharge"
-      android:layout_width="wrap_content"
+      android:layout_width="250dp"
       android:layout_height="wrap_content"
+      android:background="@drawable/round_button"
       android:text="Recharge App"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.559"
+      app:layout_constraintHorizontal_bias="0.498"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintVertical_bias="0.963" />
+      app:layout_constraintVertical_bias="0.976" />
 
   <TextView
       android:id="@+id/textView24"
