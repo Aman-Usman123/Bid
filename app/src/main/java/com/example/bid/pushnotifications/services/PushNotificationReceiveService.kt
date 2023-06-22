@@ -47,8 +47,8 @@ class PushNotificationReceiveService : FirebaseMessagingService() {
             NotificationCompat.Builder(this, getString(R.string.push_notification_channel_id))
                 .apply {
                     setContentTitle(message.data["title"])
-                    setStyle(NotificationCompat.BigTextStyle().bigText(message.data["message"]+"\n ${message.data["ProductName"]}" +
-                            "\n ${message.data["userid"]}"))
+                    setStyle(NotificationCompat.BigTextStyle().bigText(message.data["message"]+"\n ${message.data["ProductName"]}"
+                            ))
                     setSmallIcon(R.mipmap.ic_launcher)
                     setAutoCancel(true)
                     setContentIntent(pendingIntent)
@@ -56,8 +56,6 @@ class PushNotificationReceiveService : FirebaseMessagingService() {
                 }.build()
         notificationManager.notify(notificationID, notification)
     }
-
-
     @RequiresApi(Build.VERSION_CODES.O)
     private fun createNotificationChannel(notificationManager: NotificationManager) {
         val channelName = "LedgerO Entries"
@@ -65,7 +63,7 @@ class PushNotificationReceiveService : FirebaseMessagingService() {
             channelName, IMPORTANCE_HIGH).apply {
             description = "Display all entries update notifications"
             enableLights(true)
-            lightColor = Color.GREEN
+            lightColor = Color.BLUE
         }
         notificationManager.createNotificationChannel(channel)
     }

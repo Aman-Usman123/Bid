@@ -104,10 +104,8 @@ class Settings : AppCompatActivity() {
     }
 
     private fun navigateToLoginScreen() {
-        // Navigate to the login screen
-        val intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)
-        finish() // Finish the current activity
+
+        finishAffinity() // Finish the current activity
     }
 
 

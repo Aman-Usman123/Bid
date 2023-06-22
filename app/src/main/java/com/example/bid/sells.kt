@@ -35,10 +35,10 @@ class sells : Fragment() {
 
         val v= inflater.inflate(R.layout.fragment_sells, container, false)
         val imageview = v.findViewById<ImageView>(R.id.imageo)
-        val product = v.findViewById<EditText>(R.id.editTextTextPersonName5)
-        val catagory = v.findViewById<EditText>(R.id.editTextTextPersonName6)
-        val sizes = v.findViewById<EditText>(R.id.editTextTextPersonName7)
-        val weight = v.findViewById<EditText>(R.id.editTextTextPersonName8)
+        val product = v.findViewById<EditText>(R.id.editTextTextPersonName5).text
+        val catagory = v.findViewById<EditText>(R.id.editTextTextPersonName6).text
+        val sizes = v.findViewById<EditText>(R.id.editTextTextPersonName7).text
+        val weight = v.findViewById<EditText>(R.id.editTextTextPersonName8).text
         val select2 =v. findViewById<Button>(R.id.uplod)
         val save = v.findViewById<Button>(R.id.save)
         progressBar=v.findViewById(R.id.progressBar)
@@ -55,6 +55,8 @@ class sells : Fragment() {
             imageGallery.launch("image/*")
         }
         save.setOnClickListener {
+            if(product.isNotEmpty()&&catagory.isNotEmpty()&&sizes.isNotEmpty()&&weight.isNotEmpty()&& imageview.drawable!==null)
+            {
             isProgressBarVisible = true // Set the visibility of the progress bar to true
             progressBar.visibility = View.VISIBLE
             storageReference.getReference("Images").child(System.currentTimeMillis().toString())
@@ -67,10 +69,10 @@ class sells : Fragment() {
                         val imageMap1 = mapOf(
                             "idofproduct" to uid,
                             "ImageUrl" to downlaodUrl.toString(),
-                            "product" to product.text.toString(),
-                            "catagory" to catagory.text.toString(),
-                            "size" to sizes.text.toString(),
-                            "weight" to weight.text.toString(),
+                            "product" to product.toString(),
+                            "catagory" to catagory.toString(),
+                            "size" to sizes.toString(),
+                            "weight" to weight.toString(),
 
                             )
 
@@ -81,10 +83,10 @@ class sells : Fragment() {
                         databaseReference.child(uid).child("timestamp").setValue(timestamp)
 
                             .addOnSuccessListener {
-                                product.text.clear()
-                                catagory.text.clear()
-                                sizes.text.clear()
-                                weight.text.clear()
+                                product.clear()
+                                catagory.clear()
+                                sizes.clear()
+                                weight.clear()
                                 imageview.setImageDrawable(null)
                                 isProgressBarVisible = false
                                 progressBar.visibility = View.GONE
@@ -99,6 +101,10 @@ class sells : Fragment() {
                     }
                 }
 
+        }else
+            {
+        Toast.makeText(requireContext(),"Please upload picture and put All the information in fields",Toast.LENGTH_SHORT).show()
+            }
         }
 
         val onBackPressedCallback = object : OnBackPressedCallback(true) {

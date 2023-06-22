@@ -102,8 +102,7 @@ class PostRemoverBroadCast : BroadcastReceiver() {
                     if (token != null) {
                         val notificationSender =PushNotification()
                         val userToken = token
-                        val title = "Notification Title"
-                        val message = "Notification Message"
+
 
                         notificationSender.createAndSendNotification(userId, userToken)
                         // Send the notification using the FCM token
