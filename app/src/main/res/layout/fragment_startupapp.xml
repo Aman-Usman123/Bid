@@ -14,7 +14,6 @@
         android:layout_height="150dp"
         android:layout_centerHorizontal="true"
         android:src="@drawable/vector"
-
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -24,7 +23,7 @@
 
     <TextView
         android:id="@+id/firstname"
-        android:layout_width="350dp"
+        android:layout_width="365dp"
         android:layout_height="60dp"
         android:layout_below="@+id/ic_school"
         android:layout_centerHorizontal="true"
@@ -39,7 +38,7 @@
 
     <TextView
         android:id="@+id/secondname"
-        android:layout_width="180dp"
+        android:layout_width="190dp"
         android:layout_height="60dp"
         android:layout_below="@+id/firstname"
         android:layout_centerHorizontal="true"

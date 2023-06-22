@@ -27,7 +27,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="@+id/views1"
         app:layout_constraintTop_toTopOf="@+id/views1"
-        app:layout_constraintVertical_bias="0.18" />
+        app:layout_constraintVertical_bias="0.317" />
 
     <EditText
         android:id="@+id/editTextTextPersonName5"
@@ -111,22 +111,24 @@
         android:id="@+id/save"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:text="Apply to Sell"
+        android:layout_below="@+id/editTextTextPersonName8"
         android:background="@drawable/round_button"
+        android:text="Apply to Sell"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/views1"
-        app:layout_constraintVertical_bias="0.358"
+        app:layout_constraintVertical_bias="0.891"
         tools:ignore="MissingConstraints" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/uplod"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="72dp"
-        android:text="Uplod"
+        android:layout_marginBottom="36dp"
         android:background="@drawable/round_button"
+        android:text="Uplod"
         app:layout_constraintBottom_toBottomOf="@+id/views1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

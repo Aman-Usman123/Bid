@@ -18,7 +18,7 @@
         android:layout_below="@id/app_icon"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="8dp"
-        android:text="My App"
+        android:text="About App"
         android:textSize="24sp" />
 
     <!-- App version -->
@@ -40,7 +40,8 @@
         android:layout_below="@id/app_version"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
-        android:text="This is a great app that does amazing things."
+        android:text="The application will provide the solution of the above problem people will make auction online. They don’t waste their time in travelling to location. This will also help us to provide the more bidders to product.
+"
         android:textSize="18sp" />
 
     <!-- Credits -->
@@ -51,7 +52,7 @@
         android:layout_below="@id/app_description"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="32dp"
-        android:text="Credits:"
+        android:text="Developers:"
         android:textSize="20sp" />
 
     <TextView
@@ -61,7 +62,7 @@
         android:layout_below="@id/credits"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="8dp"
-        android:text="Aman Usman (Full Stack Developer)"
+        android:text="M. Muheeb Javed(FA19-BCS-057)"
         android:textSize="16sp" />
 
     <TextView
@@ -71,7 +72,7 @@
         android:layout_below="@id/credit_1"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="8dp"
-        android:text="Moheeb Javed(Designer)"
+        android:text="Aman Usman Haider(FA19-BCS-090)"
         android:textSize="16sp" />
 
     <TextView
@@ -81,6 +82,6 @@
         android:layout_below="@id/credit_2"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="8dp"
-        android:text="Zeeshan Zaheer(Designer)"
+        android:text="M. Zeeshan Zaheer(FA19-BCS-098)"
         android:textSize="16sp" />
 </RelativeLayout>
