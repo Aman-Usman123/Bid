@@ -87,17 +87,18 @@ android:id="@+id/loogin"
         android:layout_marginBottom="20dp"
         android:background="@drawable/textfields"
         android:ems="10"
-        android:padding="15dp"
         android:hint="usd12@gmail.com"
         android:inputType="textEmailAddress"
+        android:padding="15dp"
         android:textColor="@color/black"
         android:textStyle="bold"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.354" />
+        app:layout_constraintVertical_bias="0.352" />
 
     <TextView
         android:id="@+id/textView6"

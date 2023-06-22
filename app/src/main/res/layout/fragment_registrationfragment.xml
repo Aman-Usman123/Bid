@@ -61,18 +61,18 @@
         android:layout_marginBottom="20dp"
         android:background="@drawable/textfields"
         android:ems="10"
-        android:hint=" usd12@gmail.com"
+        android:hint="usd12@gmail.com"
         android:inputType="textEmailAddress"
-        android:padding="15dp"
+        android:padding="10dp"
         android:textColor="@color/black"
-        android:textSize="10sp"
+
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.517" />
+        app:layout_constraintVertical_bias="0.513" />
 
     <TextView
         android:id="@+id/textView6"
@@ -115,8 +115,8 @@
         android:ems="10"
         android:hint=" min.Barcheret£"
         android:inputType="textPassword"
-        android:padding="15dp"
-        android:textSize="10sp"
+        android:padding="10dp"
+
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -166,8 +166,8 @@
         android:ems="10"
         android:hint="First Name"
         android:inputType="textPersonName"
-        android:padding="15dp"
-        android:textSize="10sp"
+        android:padding="10dp"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -202,8 +202,8 @@
         android:ems="10"
         android:hint="Last Name"
         android:inputType="textPersonName"
-        android:padding="15dp"
-        android:textSize="10sp"
+        android:padding="10dp"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -237,14 +237,14 @@
         android:ems="10"
         android:hint="+923000900000"
         android:inputType="number"
-        android:padding="15dp"
-        android:textSize="10sp"
+        android:padding="10dp"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.798" />
+        app:layout_constraintVertical_bias="0.8" />
 
     <TextView
         android:id="@+id/logtext"
