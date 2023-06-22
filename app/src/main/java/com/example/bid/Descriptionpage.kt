@@ -32,7 +32,7 @@ class Descriptionpage : AppCompatActivity() {
 findhighestidamount()
          productImage = intent.getStringExtra("productImage")
         productName = intent.getStringExtra("productName")
-        Picasso.get().load(productImage).into(image)
+        Picasso.get().load(productImage).fit().into(image)
         val productDescription = intent.getStringExtra("productDescription")
 
         findViewById<TextView>(R.id.pname).text = productName
@@ -131,8 +131,8 @@ saveBBIDRecord()
                     it.result.children.forEach {  bid->
                         val data=bid.value
 
-                        val amount=bid.child("Amount").value as String
-                          listifBids.add(amount.toDouble())
+                         val amount=bid.child("Amount").value as String
+                           listifBids.add(amount.toDouble())
 
 
                     }
@@ -160,14 +160,14 @@ saveBBIDRecord()
     }
 
 
-    }
 
 
 
-    /* override fun onBackPressed() {
-        val intent = Intent(this, ::class.java)
+
+    override fun onBackPressed() {
+        val intent = Intent(this, playing::class.java)
         startActivity(intent)
         super.onBackPressed()
 
     }
-}*/
+}

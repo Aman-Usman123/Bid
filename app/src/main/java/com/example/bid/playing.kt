@@ -42,6 +42,8 @@ class playing : AppCompatActivity() {
                     return@setOnItemSelectedListener true
                 }
                 R.id.setting -> {
+                    val fragmentManager = supportFragmentManager
+                    fragmentManager.popBackStack()
                     startActivity(Intent(this, Settings::class.java))
                 }
             }
@@ -53,5 +55,10 @@ class playing : AppCompatActivity() {
         supportFragmentManager.beginTransaction()
             .replace(R.id.playing, fragment)
             .commit()
+    }
+
+    override fun onBackPressed() {
+        finishAffinity()
+        super.onBackPressed()
     }
  }

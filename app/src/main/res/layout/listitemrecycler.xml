@@ -26,8 +26,9 @@
             <ImageView
                 android:id="@+id/imageVi"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:scaleType="fitCenter"/>
+                android:layout_height="200dp"
+                android:scaleType="centerInside"
+                android:adjustViewBounds="true" />
 
             <TextView
                 android:id="@+id/productname"

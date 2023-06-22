@@ -149,5 +149,11 @@ class Settings : AppCompatActivity() {
             })
     }
 
+    override fun onBackPressed() {
+        val intent = Intent(this, playing::class.java)
+        startActivity(intent)
+        super.onBackPressed()
+
+    }
 
 }
